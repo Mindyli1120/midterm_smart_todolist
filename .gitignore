@@ -4,3 +4,5 @@ public/styles
 *.log
 *.sqlite3
 users_stories.md
+secrets.js
+.DS_Store
