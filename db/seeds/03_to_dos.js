@@ -6,16 +6,6 @@ exports.seed = function(knex, Promise) {
     const categoryIds = {};
     toDoLists.forEach((toDoList) => {
       categoryIds[toDoList.category] = toDoLists.id;
-    //   switch (toDoList.category) {
-    //     case 'movies':
-    //       categoryIds.movies = toDoLists.id
-    //     case 'restaurants':
-
-    //     case 'books':
-
-    //     case 'products':
-    //   }
-    // })
     })
     return categoryIds;
   })
@@ -30,3 +20,4 @@ exports.seed = function(knex, Promise) {
 
   
 };
+

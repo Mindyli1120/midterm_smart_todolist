@@ -10,7 +10,8 @@ const sass        = require("node-sass-middleware");
 const app         = express();
 const cookieSession = require('cookie-session');
 const bcryptjs = require('bcryptjs');
-const APIs = require('./secrets');
+//const APIs = require('./secrets');
+const newToDo = require('./data/new_data');
 
 const knexConfig  = require("./knexfile");
 const knex        = require("knex")(knexConfig[ENV]);
@@ -67,7 +68,7 @@ app.get('/login/:id', (req, res) => {
 //test content with APIs
 app.post("/new", (req, res) => {
   let content = req.body.content;
-  APIs.apis(content);
+  newToDo.newToDos(content);
   res.redirect("/");
 });
 
