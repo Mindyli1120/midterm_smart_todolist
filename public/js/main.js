@@ -222,6 +222,11 @@
 		})
 	}
 
+	var submitItem = function () {
+		$('#navbar input.add-new-items').on('click', function () {
+			console.log("then clicked");
+		  })
+	}
 
 
 	var sliderMain = function () {
@@ -301,6 +306,7 @@
 
 		mobileMenuOutsideClick();
 		createItem();
+		submitItem();
 		sliderMain();
 		stickyFunction();
 
