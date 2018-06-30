@@ -153,9 +153,9 @@
 		$('#navbar a:not([class="external"])').click(function (event) {
 			var section = $(this).data('nav-section'),
 				navbar = $('#navbar');
-			console.log(section)
+			//console.log(section)
 			var $section = $('[data-section="' + section + '"]')
-			console.log($section, $section.offset());
+			//console.log($section, $section.offset());
 
 			if ($section.length) {
 				$('html, body').animate({

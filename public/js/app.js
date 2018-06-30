@@ -22,17 +22,17 @@ $(document).ready(function () {
   };
 
 
-  function createToDoItem(key, id) {
+  function createToDoItem(key) {
     console.log('createToDoItem', key);
-    let $span = $('<span>')
+    let $span = $('<span>', {ondrop:"drop(event)", ondragover:"allowDrop(event)"})
     let check = $('<input>', {type:'checkbox', class:'form-check-input', id:'exampleCheck1'});
     let item = $('<tt>').text(key.name)
     let edit = $('<button>').text('EDIT').addClass('btn btn-info btn-sm');
-    let deleteButton = $('<button>').text('DELETE').addClass('btn btn-info btn-sm');
-    let $liItem = $('<li>').addClass('list-group-item');
+    let deleteButton = $('<button>', {text: 'DELETE', id:"delete", class:'btn btn-info btn-sm'});
+    let $liItem = $('<li>', {class:"list-group-item", draggable:'true', ondragstart:"drag(event)"});
     $liItem.append(check, item, edit, deleteButton);
     $span.append($liItem);
-    let $category = $('#movie');
+    let $category = $('#restaurants');
     $category.append($span); //if restaurants, books, products, movies is passed in it will add it here
 
     return $category;
@@ -40,19 +40,31 @@ $(document).ready(function () {
 
 });;
 
-// $('button').click(function(e) {
 
-// })
+//DELETE BUTTON
+
+  $(document).on('click', '#delete.btn', function() {
+    $(this).parent().remove();
+});
 
 
-// What should we do to read the two tables together???
-$.ajax({
-method: "GET",
-url: "/api/to_dos" //look into the toDoList.js for the database as supposed
-}).done((to_dos) => {
-for (to_do of to_dos) {
-$("<li>").text(to_dos.name).appendTo($("body"));
+
+// DRAG AND DROP FUNCTIONALITY
+function allowDrop(ev) {
+  ev.preventDefault();
 }
-})
+
+function drag(ev) {
+  ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+  ev.preventDefault();
+  var data = ev.dataTransfer.getData("text");
+  ev.target.appendChild(document.getElementById(data));
+}
+
+
+
 
 
