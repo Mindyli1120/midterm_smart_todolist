@@ -4,7 +4,7 @@ module.exports = {
 const newData = require("./data/new_data");
 
 const resultArr = [false, false, false];
-function apis(content) {
+function apis(content, resolve) {
   console.log("apis first content:", content);
   const yelp = require('yelp-fusion');
   const client = yelp.client("z7_PHslim4AHrYkDh5cLj5YOyxg41e9lal6ECSU7LcbLiwdKnH0TVgx9F9N0c_6NfTE29nJ7PI3LhtG0AzvlKSQ3XMKh3IQJ-XIFZ9-OxorjwfNYNv2EUBVJKz40W3Yx")
@@ -12,7 +12,7 @@ function apis(content) {
     term: content,
     location: 'vancouver, bc'
   }).then(response => {
-    console.log("yelp's result: ", response.jsonBody.businesses[0].name);
+    //console.log("yelp's result: ", response.jsonBody.businesses[0].name);
     const result = response.jsonBody.businesses[0].name.toLowerCase();
     console.log(content);
     if (result.includes(content.toLowerCase())) {
@@ -37,8 +37,10 @@ function apis(content) {
     return newData.newToDos(content, category);
   }).then(() => {
     console.log("success");
+    return resolve();
   }).catch((e) => {
     console.log(e);
+    return resolve();
   });
 }
 

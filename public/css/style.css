@@ -15,7 +15,8 @@ body {
   }
 }
 
-#hero body, html {
+#hero body,
+html {
   height: 100%;
   margin: 0;
 }
@@ -59,7 +60,12 @@ p {
   margin-bottom: 1.5em;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: #000;
   font-family: "Playfair Display", Georgia, serif;
   font-weight: 400;
@@ -377,7 +383,8 @@ figure figcaption {
     text-align: center;
   }
 }
-#colorlib-hero .flexslider .slider-text > .slider-text-inner h1, #colorlib-hero .flexslider .slider-text > .slider-text-inner h2 {
+#colorlib-hero .flexslider .slider-text > .slider-text-inner h1,
+#colorlib-hero .flexslider .slider-text > .slider-text-inner h2 {
   margin: 0;
   padding: 0;
   color: black;
@@ -458,13 +465,25 @@ body.offcanvas #colorlib-aside {
   z-index: 1;
   position: fixed;
 }
-body.offcanvas #colorlib-main, body.offcanvas .colorlib-nav-toggle {
+body.offcanvas #colorlib-main,
+body.offcanvas .colorlib-nav-toggle {
   top: 0;
   -moz-transform: translateX(300px);
   -webkit-transform: translateX(300px);
   -ms-transform: translateX(300px);
   -o-transform: translateX(300px);
   transform: translateX(300px);
+}
+
+#list-group-item > i.fas {
+  float: right;
+  margin: 5px;
+  filter: opacity(50%);
+  color: #446c75;
+}
+
+#list-group-item > i.fas:hover {
+  filter: opacity(100%);
 }
 
 .initially-hidden {
@@ -680,6 +699,7 @@ body.offcanvas #colorlib-main, body.offcanvas .colorlib-nav-toggle {
 
 .btn {
   margin-right: 4px;
+  margin-left: 4px;
   margin-bottom: 4px;
   font-family: "Quicksand", Arial, sans-serif;
   font-size: 12px;

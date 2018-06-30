@@ -1,18 +1,18 @@
 $(document).ready(function () {
   loadItems();
 
-  function createToDoItem(item, id) {
+  function createToDoItem(item) {
       console.log('createToDoItem', item);
     let $span = $('<span>')
     let check = $('<input>').attr('id', 'exampleCheck1').addClass('form-check-input');
-    let item = $('<tt>').text(user.list.item)
-    let edit = $('<button>').text('EDIT').addClass('btn btn-info btn-sm');
+    let item = $('<tt>').text(item.name)
+    let edit = $('<button>').text('EDIT').attr('id, edit').addClass('btn btn-info btn-sm');
     let deleteButton = $('<button>').text('DELETE').addClass('btn btn-info btn-sm');
     let $liItem = $('<li>').addClass('list-group-item');
     $liItem.append(check, item, edit, deleteButton);
     $span.append($liItem);
-    $('#restaurant').append($span); //if restaurants, books, products, movies is passed in it will add it here
-
+    let $category = $('#restaurants');
+    $category.append($span); //if restaurants, books, products, movies is passed in it will add it here
     return $span;
   }
 
@@ -35,5 +35,11 @@ $(document).ready(function () {
       }
     })
   }
+
+//   function deleteItem(item) {
+//   $('#edit.btn').click(function() {
+//       $('li').remove();
+//   })
+//   }
 
 });
