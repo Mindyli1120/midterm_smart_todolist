@@ -8,9 +8,9 @@ const express     = require("express");
 const bodyParser  = require("body-parser");
 const sass        = require("node-sass-middleware");
 const app         = express();
-const cookieSession = require('cookie-session');
-const bcryptjs = require('bcryptjs');
-const APIs = require('./secrets');
+//const cookieSession = require('cookie-session');
+//const bcryptjs = require('bcryptjs');
+//const APIs = require('./secrets');
 const newToDo = require('./data/new_data');
 const path = require('path');
 
@@ -50,10 +50,10 @@ app.use("/api/to_dos", toDosRoutes(knex));
 
 //cookie encrypt with cookie session
 //if have time, get back to this 
-app.use(cookieSession({
-  name: 'session',
-  keys: ['hel980'],
-}));
+//app.use(cookieSession({
+//  name: 'session',
+//  keys: ['hel980'],
+//}));
 
 // Home page
 app.get("/", (req, res) => {
@@ -70,7 +70,7 @@ app.get('/login/:id', (req, res) => {
 app.post("/new", (req, res) => {
   let content = req.body.content;
   console.log("server side content: ", content);
-  APIs.apis(content);
+  //APIs.apis(content);
   res.redirect("/");
 });
 
