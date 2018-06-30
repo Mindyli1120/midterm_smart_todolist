@@ -11,7 +11,6 @@ const app         = express();
 const cookieSession = require('cookie-session');
 const bcryptjs = require('bcryptjs');
 const APIs = require('./secrets');
-const newToDo = require('./data/new_data');
 const path = require('path');
 
 const knexConfig  = require("./knexfile");

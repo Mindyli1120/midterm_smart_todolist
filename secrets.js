@@ -34,7 +34,6 @@ function apis(content) {
     } else {
       category = "products";
     }
-    console.log("the category at 35", category);
     return newData.newToDos(content, category);
   }).then(() => {
     console.log("success");
@@ -63,8 +62,6 @@ function movieapi(content) {
 function bookapi(content) {
   const books = require('google-books-catalogue-search');
     books.search(content, (error, results) => {
-      console.log("book error: ", error);
-      console.log("book results: ", results[0].title);
       if (error) {
         console.error(error);
       }
