@@ -476,14 +476,15 @@ body.offcanvas .colorlib-nav-toggle {
 }
 
 #list-group-item > i.fas {
-  float: right;
-  margin: 5px;
-  filter: opacity(50%);
-  color: #446c75;
+  float: right !important;
+  margin: 5px !important;
+  filter: opacity(50%) !important;
+  color: #446c75 !important;
 }
 
 #list-group-item > i.fas:hover {
-  filter: opacity(100%);
+  filter: opacity(100%) !important;
+  cursor: pointer !important;
 }
 
 .initially-hidden {

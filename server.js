@@ -10,7 +10,7 @@ const sass        = require("node-sass-middleware");
 const app         = express();
 //const cookieSession = require('cookie-session');
 //const bcryptjs = require('bcryptjs');
-//const APIs = require('./secrets');
+const APIs = require('./secrets');
 const newToDo = require('./data/new_data');
 const path = require('path');
 
@@ -70,7 +70,7 @@ app.get('/login/:id', (req, res) => {
 app.post("/new", (req, res) => {
   let content = req.body.content;
   console.log("server side content: ", content);
-  //APIs.apis(content);
+  APIs.apis(content);
   res.redirect("/");
 });
 

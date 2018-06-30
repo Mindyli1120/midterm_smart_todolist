@@ -4,16 +4,14 @@ $(document).ready(function () {
   function loadItems(list) {
     $.ajax({
       method: "GET",
-      url: "/api/to_dos",
+      url: "/api/users",
       success: function (list) {
         renderLists(list);
-        console.log("list 1", list)
       }
     })
   }
 
   function renderLists(list) {
-    console.log('render lists', list);
       list.forEach(function (item) {
       console.log("item:", item)
       let $span = createToDoItem(item, item.id);
@@ -23,14 +21,16 @@ $(document).ready(function () {
 
 
   function createToDoItem(key) {
-    console.log('createToDoItem', key);
     let $span = $('<span>', {ondrop:"drop(event)", ondragover:"allowDrop(event)"})
     let check = $('<input>', {type:'checkbox', class:'form-check-input', id:'exampleCheck1'});
     let item = $('<tt>').text(key.name)
-    let edit = $('<button>').text('EDIT').addClass('btn btn-info btn-sm');
     let deleteButton = $('<button>', {text: 'DELETE', id:"delete", class:'btn btn-info btn-sm', data:(item.id)});
-    let $liItem = $('<li>', {class:"list-group-item", draggable:'true', ondragstart:"drag(event)"});
-    $liItem.append(check, item, edit, deleteButton);
+    let icon1 = $('<i>', {id:"icons", class:"fas fa-utensils"});
+    let icon2 = $('<i>', {id:"icons", class:"fas fa-book-open"});
+    let icon3 = $('<i>', {id:"icons", class:"fas fa-box-open"});
+    let icon4 = $('<i>', {id:"icons", class:"fas fa-video"});
+    let $liItem = $('<li>', {id: "list-group-item", class:"list-group-item", draggable:'true', ondragstart:"drag(event)"});
+    $liItem.append(check, item, deleteButton, icon1, icon2, icon3, icon4);
     $span.append($liItem);
     let $category = $('#restaurants');
     $category.append($span); //if restaurants, books, products, movies is passed in it will add it here
@@ -46,7 +46,6 @@ $(document).ready(function () {
      url: "/",
      success: function (list) {
        loadItems(list);
-       console.log("list 2", list)
      }
    })
  }
@@ -64,25 +63,79 @@ $(document).ready(function () {
       })
 });
 
+//CHANGE CATEGORY
+
+$(document).on('click', '#icons.fa-utensils', function() {
+  updateRestaurantItem()
+  $.ajax({
+    method: "GET",
+    url: "/",
+    success: function (){
+      return;
+    }
+  });
+  $('<li>').attr('id', 'restaurants');
+})
+
+$(document).on('click', '#icons.fa-book-open', function() {
+  updateBookItem()
+  $.ajax({
+    method: "GET",
+    url: "/",
+    success: function (){
+      loadItems();
+    }
+  });
+  $('<li>').attr('id', 'books');
+})
+
+$(document).on('click', '#icons.fa-box-open', function() {
+  updateProductItem()
+  $.ajax({
+    method: "GET",
+    url: "/",
+    success: function (){
+      loadItems();
+    }
+  });
+  $(this).attr('id', 'products');
+})
+
+$(document).on('click', '#icons.fa-video', function() {
+  updateMovieItem()
+    $.ajax({
+      method: "GET",
+      url: "/",
+      success: function (){
+        loadItems();
+      }
+    });
+})
+
+function updateMovieItem(){
+  console.log("THIS", $(this));
+  console.log("LINE ITEM", $(this).closest('li'));
+  console.log("ID", $(this).closest('li').id);
+  $(this).closest('li').attr('id', 'movie');
+  console.log("MOVIE ID", $(this).closest('li').attr('id', 'movie'));
+  }
+
+function updateRestaurantItem(){
+  $(this).closest('li').attr('id', 'restaurants');
+  console.log("RESTAURANT ID", $(this).closest('li').attr('id', 'restaurants'));
+  }
+
+function updateBookItem(){
+  $(this).closest('li').attr('id', 'books');
+  console.log("BOOK ID", $('<li>').attr('id', 'books'));
+  }
+
+function updateProductItem(){
+  $(this).closest('li').attr('id', 'products');
+  console.log("PRODUCT ID", $(this).closest('li').attr('id', 'products'));
+  }
 
 
-// DRAG AND DROP FUNCTIONALITY
-//function allowDrop(ev) {
-//  ev.preventDefault();
-//}
-//
-//function drag(ev) {
-//  ev.dataTransfer.setData("text", ev.target.id);
-//  console.log(ev)
-//}
-//
-//function drop(ev) {
-//  ev.preventDefault();
-//  var data = ev.dataTransfer.getData("text");
-//  console.log('Data: ', data);//nothing 
-//  console.log('document', document.getElementById(data));//null
-//  ev.target.appendChild(document.getElementById(data));
-//}
 
 
 
