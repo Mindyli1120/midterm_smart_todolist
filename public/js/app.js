@@ -68,10 +68,10 @@ $(document).ready(function () {
 $(document).on('click', '#icons.fa-utensils', function() {
   updateRestaurantItem()
   $.ajax({
-    method: "GET",
+    method: "POST",
     url: "/",
     success: function (){
-      return;
+      loaditems();
     }
   });
   $('<li>').attr('id', 'restaurants');
