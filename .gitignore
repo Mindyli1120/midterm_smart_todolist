@@ -5,4 +5,4 @@ public/styles
 *.sqlite3
 users_stories.md
 secrets.js
-.DS_Store
+data/.DS_Store

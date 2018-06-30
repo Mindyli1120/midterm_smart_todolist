@@ -10,8 +10,9 @@ const sass        = require("node-sass-middleware");
 const app         = express();
 const cookieSession = require('cookie-session');
 const bcryptjs = require('bcryptjs');
-//const APIs = require('./secrets');
+const APIs = require('./secrets');
 const newToDo = require('./data/new_data');
+const path = require('path');
 
 const knexConfig  = require("./knexfile");
 const knex        = require("knex")(knexConfig[ENV]);
@@ -30,7 +31,7 @@ app.use(morgan('dev'));
 // Log knex SQL queries to STDOUT as well
 app.use(knexLogger(knex));
 
-app.set("view engine", "ejs");
+app.use(express.static(path.join(__dirname, "/public")));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/styles", sass({
   src: __dirname + "/styles",
@@ -38,7 +39,7 @@ app.use("/styles", sass({
   debug: true,
   outputStyle: 'expanded'
 }));
-app.use(express.static("public"));
+
 
 // Mount all resource routes
 app.use("/api/users", usersRoutes(knex));
@@ -56,7 +57,7 @@ app.use(cookieSession({
 
 // Home page
 app.get("/", (req, res) => {
-  res.render("index");
+  res.render("index.html");
 });
 
 //Login  if have time, get back to this
@@ -68,7 +69,8 @@ app.get('/login/:id', (req, res) => {
 //test content with APIs
 app.post("/new", (req, res) => {
   let content = req.body.content;
-  newToDo.newToDos(content);
+  console.log("server side content: ", content);
+  APIs.apis(content);
   res.redirect("/");
 });
 
