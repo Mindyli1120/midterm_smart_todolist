@@ -4,7 +4,7 @@ $(document).ready(function () {
   function loadItems(list) {
     $.ajax({
       method: "GET",
-      url: "/api/users",
+      url: "/api/to_dos",
       success: function (list) {
         renderLists(list);
         console.log("list 1", list)

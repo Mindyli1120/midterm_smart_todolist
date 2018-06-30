@@ -4,11 +4,8 @@ module.exports = {
     newToDos: newToDos  
 }
 
-
-
-
-function newToDos(content) {
-    
+function newToDos(content, category) {
+    console.log("category at new_data 8:", category);
     const knex = require('knex')({
         client: 'pg',
         connection: {
@@ -21,36 +18,19 @@ function newToDos(content) {
         },
     });
     
-    // knex("to_do_lists")
-    // .insert({category: content, user_id: 1})
-    // .returning('id')
-    // .then((id) => {
-    //   return knex("to_dos").insert({name: content, list_id: id}).then(() => {
-    //       // do something
-    //   })
-    // })
-
+    console.log("category at new_data 29: ", category);
     return (knex("to_do_lists")
-            .insert({category: content, user_id: 1})
+            .insert({category: category, user_id: 1})
             .returning('id')
             .then((id) => {
-            return knex("to_dos").insert({name: content, list_id: id}).returning('id')
-            }));
-    
-    
-    // .catch((e) => {
-    //     console.log(e)
-    // });
-
-    // category = apis.apis(content)
-    // console.log ("category at new_data.js: ", category);   
-    // return knex.select("id").from("to_do_lists").where({category: category, user_id: 1})
-    // .then((todoList) => {
-    //     knex("to_dos").insert({title: content, list_id: todoList.id})
-    // }).catch(e => {
-    //     console.log(e);
-    // });
-    // return;
+                const numId = Number(id);
+            return knex("to_dos").insert({name: content, status: true, list_id: numId}).returning('id')
+            }).catch((e) =>{
+                console.log(e);
+            }).finally(function() {
+                knex.destroy();
+            })
+        );
 }
 
 
