@@ -1,6 +1,7 @@
+
 $(document).ready(function () {
   loadItems();
-
+  
   function loadItems(list) {
     $.ajax({
       method: "GET",
@@ -12,7 +13,8 @@ $(document).ready(function () {
   }
 
   function renderLists(list) {
-      list.forEach(function (item) {
+    //$('#category-block').empty();
+    list.forEach(function (item) {
       console.log("item:", item)
       let $span = createToDoItem(item, item.id);
       $('.list-group').append($span);
@@ -20,28 +22,82 @@ $(document).ready(function () {
   };
 
   function createToDoItem(key) {
-    let $span = $('<span>', {ondrop:"drop(event)", ondragover:"allowDrop(event)"})
-    let check = $('<input>', {type:'checkbox', class:'form-check-input', id:'exampleCheck1'});
+    let $span = $('<span>', { ondrop: "drop(event)", ondragover: "allowDrop(event)" })
+    let check = $('<input>', { type: 'checkbox', class: 'form-check-input', id: 'exampleCheck1' });
     let item = $('<tt>').text(key.name)
-    let icon1 = $('<i>', {id:"icons", class:"fas fa-utensils",});
-    let icon2 = $('<i>', {id:"icons", class:"fas fa-book-open"});
-    let icon3 = $('<i>', {id:"icons", class:"fas fa-box-open"});
-    let icon4 = $('<i>', {id:"icons", class:"fas fa-video"});
-    let $liItem = $('<li>', {id: key.id, class:"list-group-item"});
+    let icon1 = $('<i>', { id: "icons", class: "fas fa-utensils my-icon", });
+    let icon2 = $('<i>', { id: "icons", class: "fas fa-book-open my-icon" });
+    let icon3 = $('<i>', { id: "icons", class: "fas fa-box-open my-icon" });
+    let icon4 = $('<i>', { id: "icons", class: "fas fa-video my-icon" });
+    let $liItem = $('<li>', { id: key.id, class: "list-group-item" });
     $liItem.append(check, item, icon1, icon2, icon3, icon4);
     $span.append($liItem);
     let $category = $('#' + key.category);
     $category.append($span); //if restaurants, books, products, movies is passed in it will add it here
-    $(`#${key.id} > #icons.fa-utensils`).click(function() {
+
+    
+
+    $(`#${key.id} > #icons.fa-utensils`).click(function () {
       $(this).parent("id")
-      //$(this).parent().key.id;
-      console.log(key.id);
 
+      $.ajax({
+        method: "PUT",
+        url:"/api/editRest",
+        data: {id: key.list_id},
+        success: function() {
+          console.log('click 2')
+          location.reload(true);
+          loadItems();
+        }
+      })
+      console.log(key.list_id);
+    }),
+
+      $(`#${key.id} > #icons.fa-book-open`).click(function () {
+        $(this).parent("id")
+        $.ajax({
+          method: "PUT",
+          url:"/api/editBook",
+          data: {id: key.list_id},
+          success: function() {
+            location.reload(true);
+            loadItems();      
+          }
+        })
+      }),
+
+      $(`#${key.id} > #icons.fa-box-open`).click(function () {
+        $(this).parent("id")
+        $.ajax({
+          method: "PUT",
+          url:"/api/editProd",
+          data: {id: key.list_id},
+          success: function() {
+            location.reload(true);
+            loadItems();
+            console.log('click 3')
+            
+          }
+        })
+      }),
+
+      $(`#${key.id} > #icons.fa-video`).click(function () {
+        $(this).parent("id")
+        $.ajax({
+          method: "PUT",
+          url:"/api/editMov",
+          data: {id: key.list_id},
+          success: function() {
+            location.reload(true);
+            loadItems();
+            console.log('click4')
+           
+          }
+        })
+      });
     return $category;
-  })
-
-};
-})
+  };
+});
 
 //  function deleteItems(list) {
 //    $.ajax({

@@ -12,11 +12,11 @@ function apis(content, resolve) {
     term: content,
     location: 'vancouver, bc'
   }).then(response => {
-    //console.log("yelp's result: ", response.jsonBody.businesses[0].name);
+    console.log("yelp's result: ", response.jsonBody.businesses[0].name);
     const result = response.jsonBody.businesses[0].name.toLowerCase();
     console.log(content);
     if (result.includes(content.toLowerCase())) {
-      resultArr[2] = true;
+      resultArr[0] = true;
       return resultArr;
     } else {
       return resultArr;
@@ -26,14 +26,15 @@ function apis(content, resolve) {
   ).then(() => {
     let category;
     if (resultArr[0] === true) {
-      category = "movies";
-    } else if (resultArr[1] === true) {
-      category = "books";
-    } else if (resultArr[2] === true) {
       category = "restaurants";
+    } else if (resultArr[1] === true) {
+      category = "movies";
+    } else if (resultArr[2] === true) {
+      category = "books";
     } else {
       category = "products";
     }
+    console.log("category at secrets 37: ", category)
     return newData.newToDos(content, category);
   }).then(() => {
     console.log("success");
@@ -52,7 +53,7 @@ function movieapi(content) {
       const obj = JSON.parse(body.body);
       const result = obj.response;
       if (result === "True") {  //typeof response is string: true or false
-        resultArr[0] = true;
+        resultArr[1] = true;
         return resultArr;
       } else {
         return resultArr;
@@ -69,7 +70,7 @@ function bookapi(content) {
       }
       const result = results[0].title.toLowerCase();
       if (result.includes(content.toLowerCase())) {
-        resultArr[1] = true;
+        resultArr[2] = true;
         return resultArr;
       } else {
         return resultArr;

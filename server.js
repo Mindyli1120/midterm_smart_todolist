@@ -11,7 +11,7 @@ const app         = express();
 const cookieSession = require('cookie-session');
 const bcryptjs = require('bcryptjs');
 const APIs = require('./secrets');
-//const newToDo = require('./data/new_data');
+
 const path = require('path');
 
 const knexConfig  = require("./knexfile");
@@ -23,7 +23,10 @@ const knexLogger  = require('knex-logger');
 const usersRoutes = require("./routes/users");
 const toDoListRoutes = require("./routes/toDoList");
 const toDosRoutes = require("./routes/toDos");
-const editRoutes = require("./routes/edit");
+const editRestRoutes = require("./routes/editRest");
+const editMovRoutes = require("./routes/editMov");
+const editBookRoutes = require("./routes/editBook");
+const editProdRoutes = require("./routes/editProd");
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
@@ -46,8 +49,10 @@ app.use("/styles", sass({
 app.use("/api/users", usersRoutes(knex));
 app.use("/api/todoList", toDoListRoutes(knex));
 app.use("/api/to_dos", toDosRoutes(knex));
-app.use("/api/edit", editRoutes(knex));
-
+app.use("/api/editRest", editRestRoutes(knex));
+app.use("/api/editMov", editMovRoutes(knex));
+app.use("/api/editBook", editBookRoutes(knex));
+app.use("/api/editProd", editProdRoutes(knex));
 
 //cookie encrypt with cookie session
 //if have time, get back to this 
@@ -74,6 +79,7 @@ app.post("/new", (req, res) => {
   new Promise((resolve, reject) => APIs.apis(content, resolve))
   .then(() => res.redirect("/"));
   console.log('after promise')
+ 
   //res.status(200).send({result: 'redirect', url:'/'})
 });
 
