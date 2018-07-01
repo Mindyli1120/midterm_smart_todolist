@@ -1,41 +1,7 @@
 
 $(document).ready(function () {
-  loadItems();
-  
-  function loadItems(list) {
-    $.ajax({
-      method: "GET",
-      url: "/api/to_dos",
-      success: function (list) {
-        renderLists(list);
-      }
-    })
-  }
 
-  function renderLists(list) {
-    //$('#category-block').empty();
-    list.forEach(function (item) {
-      console.log("item:", item)
-      let $span = createToDoItem(item, item.id);
-      $('.list-group').append($span);
-    })
-  };
-
-  // function createToDoItem(key) {
-  //   let $span = $('<span>', { ondrop: "drop(event)", ondragover: "allowDrop(event)" })
-  //   let check = $('<input>', { type: 'checkbox', class: 'form-check-input', id: 'exampleCheck1' });
-  //   let item = $('<tt>').text(key.name)
-  //   let icon1 = $('<i>', { id: "icons", class: "fas fa-utensils my-icon", });
-  //   let icon2 = $('<i>', { id: "icons", class: "fas fa-book-open my-icon" });
-  //   let icon3 = $('<i>', { id: "icons", class: "fas fa-box-open my-icon" });
-  //   let icon4 = $('<i>', { id: "icons", class: "fas fa-video my-icon" });
-  //   let $liItem = $('<li>', { id: key.id, class: "list-group-item" });
-  //   let deleteBtn = $('<button>').addClass("btn btn-info btn-sm");
-  //   $liItem.append(check, item, icon1, icon2, icon3, icon4, deleteBtn);
-  //   $span.append($liItem);
-  //   let $category = $('#' + key.category);
-  //   $category.append($span); //if restaurants, books, products, movies is passed in it will add it here
-
+  //creating new item to the to-do lists
   function createToDoItem(key) {
     let $span = $('<span>')
     let check = $('<input>', { type: 'checkbox', class: 'form-check-input', id: 'exampleCheck1' });
@@ -61,7 +27,7 @@ $(document).ready(function () {
         success: function() {
           console.log('click 2')
           location.reload(true);
-          loadItems();
+          renderLists();
         }
       })
       console.log(key.list_id);
@@ -75,7 +41,7 @@ $(document).ready(function () {
           data: {id: key.list_id},
           success: function() {
             location.reload(true);
-            loadItems();      
+            renderLists();     
           }
         })
       });
@@ -88,7 +54,7 @@ $(document).ready(function () {
           data: {id: key.list_id},
           success: function() {
             location.reload(true);
-            loadItems();
+            renderLists();
             console.log('click 3')
             
           }
@@ -103,7 +69,7 @@ $(document).ready(function () {
           data: {id: key.list_id},
           success: function() {
             location.reload(true);
-            loadItems();
+            renderLists();
           }
         })
       });
@@ -118,13 +84,34 @@ $(document).ready(function () {
           success: function() {
             console.log('click 5')
             location.reload(true);
-            loadItems();
+            renderLists();
           }
         })
         console.log(key.list_id);
       });
     return $category;
   };
+
+  function loadItems(list) {
+    $.ajax({
+      method: "GET",
+      url: "/api/to_dos",
+      success: function (list) {
+        renderLists(list);
+      }
+    })
+  }
+
+  function renderLists(list) {
+    list.forEach(function (item) {
+      console.log("item:", item)
+      let $span = createToDoItem(item, item.id);
+      $('.list-group').append($span);
+    })
+  };
+  
+  loadItems();
+
 });
 
 //  function deleteItems(list) {
