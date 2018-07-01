@@ -519,14 +519,14 @@ body {
   }
 }
 
-#list-group-item >i.fas {
+.list-group-item >i.fas {
 	float: right !important;
 	margin: 5px !important;
 	filter: opacity(50%) !important;
   color: rgb(68, 108, 117) !important;
 }
 
-#list-group-item >i.fas:hover {
+.list-group-item >i.fas:hover {
   filter: opacity(100%) !important;
   cursor: pointer !important;
 }
