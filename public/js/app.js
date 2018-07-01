@@ -4,7 +4,7 @@ $(document).ready(function () {
   function loadItems(list) {
     $.ajax({
       method: "GET",
-      url: "/api/users",
+      url: "/api/to_dos",
       success: function (list) {
         renderLists(list);
       }
@@ -18,7 +18,6 @@ $(document).ready(function () {
       $('.list-group').append($span);
     })
   };
-
 
   function createToDoItem(key) {
     let $span = $('<span>', {ondrop:"drop(event)", ondragover:"allowDrop(event)"})
@@ -38,7 +37,7 @@ $(document).ready(function () {
     return $category;
   }
 
-});;
+});
 
  function deleteItems(list) {
    $.ajax({
@@ -68,74 +67,73 @@ $(document).ready(function () {
 //CHANGE CATEGORY
 
 $(document).on('click', '#icons.fa-utensils', function() {
-  updateRestaurantItem()
-  $.ajax({
-    method: "POST",
-    url: "/",
-    success: function (){
-      loaditems();
-    }
-  });
-  $('<li>').attr('id', 'restaurants');
+ updateRestaurantItem()
+ $.ajax({
+   method: "POST",
+   url: "/api/edit",
+   success: function (){
+     loaditems();
+   }
+ });
 })
 
-$(document).on('click', '#icons.fa-book-open', function() {
-  updateBookItem()
-  $.ajax({
-    method: "GET",
-    url: "/",
-    success: function (){
-      loadItems();
-    }
-  });
-  $('<li>').attr('id', 'books');
-})
-
-$(document).on('click', '#icons.fa-box-open', function() {
-  updateProductItem()
-  $.ajax({
-    method: "GET",
-    url: "/",
-    success: function (){
-      loadItems();
-    }
-  });
-  $(this).attr('id', 'products');
-})
-
-$(document).on('click', '#icons.fa-video', function() {
-  updateMovieItem()
-    $.ajax({
-      method: "GET",
-      url: "/",
-      success: function (){
-        loadItems();
-      }
-    });
-})
-
-function updateMovieItem(){
-  console.log("THIS", $(this));
-  console.log("LINE ITEM", $(this).closest('li'));
-  console.log("ID", $(this).closest('li').id);
-  $(this).closest('li').attr('id', 'movie');
-  console.log("MOVIE ID", $(this).closest('li').attr('id', 'movie'));
-  }
-
-function updateRestaurantItem(){
-  $(this).closest('li').attr('id', 'restaurants');
-  console.log("RESTAURANT ID", $(this).closest('li').attr('id', 'restaurants'));
-  }
-
-function updateBookItem(){
-  $(this).closest('li').attr('id', 'books');
-  console.log("BOOK ID", $('<li>').attr('id', 'books'));
-  }
-
-function updateProductItem(){
-  $(this).closest('li').attr('id', 'products');
-  console.log("PRODUCT ID", $(this).closest('li').attr('id', 'products'));
-  }
+//$(document).on('click', '#icons.fa-book-open', function() {
+//  updateBookItem()
+//  $.ajax({
+//    method: "GET",
+//    url: "/",
+//    success: function (){
+//      loadItems();
+//    }
+//  });
+//  $('<li>').attr('id', 'books');
+//})
+//
+//$(document).on('click', '#icons.fa-box-open', function() {
+//  updateProductItem()
+//  $.ajax({
+//    method: "GET",
+//    url: "/",
+//    success: function (){
+//      loadItems();
+//    }
+//  });
+//  $(this).attr('id', 'products');
+//})
+//
+//$(document).on('click', '#icons.fa-video', function() {
+//  updateMovieItem()
+//    $.ajax({
+//      method: "GET",
+//      url: "/",
+//      success: function (){
+//        loadItems();
+//      }
+//    });
+//})
+//
+//function updateMovieItem(){
+//  console.log("THIS", $(this));
+//  console.log("LINE ITEM", $(this).closest('li'));
+//  console.log("ID", $(this).closest('li').id);
+//  $(this).closest('li').attr('id', 'movie');
+//  console.log("MOVIE ID", $(this).closest('li').attr('id', 'movie'));
+//  }
+//
+//function updateRestaurantItem(){
+//  $(this).closest('li').attr('id', 'restaurants');
+//  console.log("RESTAURANT ID", $(this).closest('li').attr('id', 'restaurants'));
+//  }
+//
+//function updateBookItem(){
+//  $(this).closest('li').attr('id', 'books');
+//  console.log("BOOK ID", $('<li>').attr('id', 'books'));
+//  }
+//
+//function updateProductItem(){
+//  $(this).closest('li').attr('id', 'products');
+//  console.log("PRODUCT ID", $(this).closest('li').attr('id', 'products'));
+//  }
 
 
 

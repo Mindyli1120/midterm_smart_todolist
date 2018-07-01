@@ -79,19 +79,7 @@
                     <div>
                       <form method="POST" action="/new" id="new_content">
                         <input id="content" name="content" class="new-item-input" type="text" style="width: 100%" class="form-control" Placeholder="Add new item">
-                        <!-- <div class="mb-3">
-                          <div class="input-group-prepend">
-                            <label class="input-group-text" for="inputGroupSelect01">Categories</label>
-                          </div>
-                          <select class="custom-select" id="inputGroupSelect01">
-                            <option selected>Choose...</option>
-                            <option value="1">Restaurant</option>
-                            <option value="2">Products</option>
-                            <option value="3">Books</option>
-                            <option value="3">Movies</option>
-                          </select>
-                          <br>
-                        </div> -->
+
                         <input type="submit" id="add-new-items" style="margin:5px">
                       </form>
                     </div>
@@ -190,38 +178,7 @@
               <div class="row">
                 <div id="category-block" class="col-md-3 animate-box" style="width:100%" data-animate-effect="fadeInLeft" ondrop="drop(event)" ondragover="allowDrop(event)">
                   <ul id="restaurants" class="list-group" style="width:100%">
-                    <span>
-                      <li id="list-group-item" class="list-group-item">
-                          
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <tt> Earls </tt>
-                        <button class="btn btn-info btn-sm">Edit</button>
-                        <button id="delete" data-delete-id="37" class="btn btn-info btn-sm">Delete</button>
-                        <i id="icons" class="fas fa-utensils"></i>
-                        <i id="icons" class="fas fa-book-open"></i>
-                        <i id="icons" class="fas fa-box-open"></i>
-                        <i id="icons" class="fas fa-video"></i>
-                      </li>
-                      <span>
 
-                      </span>
-                    </span>
-                    <span>
-                      <li class="list-group-item">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <tt> Cactus Club </tt>
-                        <button class="btn btn-info btn-sm">Edit</button>
-                        <button class="btn btn-info btn-sm">delete</button>
-                      </li>
-                    </span>
-                    <span>
-                      <li class="list-group-item">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <tt> Steamworks </tt>
-                        <button class="btn btn-info btn-sm">Edit</button>
-                        <button class="btn btn-info btn-sm">delete</button>
-                      </li>
-                    </span>
                   </ul>
 
                 </div>
@@ -250,30 +207,7 @@
               <div class="row">
                 <div id="category-block" class="col-md-3 animate-box" style="width:100%" data-animate-effect="fadeInLeft" ondrop="drop(event)" ondragover="allowDrop(event)">
                   <ul id="books" class="list-group">
-                    <span>
-                      <li class="list-group-item">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <tt> Harry Potter </tt>
-                        <button class="btn btn-info btn-sm">Edit</button>
-                        <button class="btn btn-info btn-sm">Delete</button>
-                      </li>
-                    </span>
-                    <span>
-                      <li class="list-group-item">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <tt> Pride and Prejudice </tt>
-                        <button class="btn btn-info btn-sm">Edit</button>
-                        <button class="btn btn-info btn-sm">Delete</button>
-                      </li>
-                    </span>
-                    <span>
-                      <li class="list-group-item">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <tt> The Boy Who Cried Wolf </tt>
-                        <button class="btn btn-info btn-sm">Edit</button>
-                        <button class="btn btn-info btn-sm">Delete</button>
-                      </li>
-                    </span>
+             
                   </ul>
 
                 </div>
@@ -302,30 +236,7 @@
               <div class="row">
                 <div class="col-md-3 animate-box" style="width:100%" data-animate-effect="fadeInLeft">
                   <ul id="products" class="list-group">
-                    <span>
-                      <li class="list-group-item">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <tt> Pink Drink Umbrellas </tt>
-                        <button class="btn btn-info btn-sm">Edit</button>
-                        <button class="btn btn-info btn-sm">Delete</button>
-                      </li>
-                    </span>
-                    <span>
-                      <li class="list-group-item">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <tt> Dawn dish soap </tt>
-                        <button class="btn btn-info btn-sm">Edit</button>
-                        <button class="btn btn-info btn-sm">Delete</button>
-                      </li>
-                    </span>
-                    <span>
-                      <li class="list-group-item">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <tt> Universal remote </tt>
-                        <button class="btn btn-info btn-sm">Edit</button>
-                        <button class="btn btn-info btn-sm">Delete</button>
-                      </li>
-                    </span>
+                    
                   </ul>
 
                 </div>
@@ -337,7 +248,7 @@
           </div>
         </section>
 
-        <section id="movies" class="colorlib-restaurants" data-section="movies">
+        <section id="movie" class="colorlib-restaurants" data-section="movies">
           <div class="colorlib-narrow-content">
             <div class="row">
 
@@ -353,32 +264,7 @@
               </div>
               <div class="row">
                 <div class="col-md-3 animate-box" style="width:100%" data-animate-effect="fadeInLeft">
-                  <ul id="movie" class="list-group">
-                    <span>
-                      <li class="list-group-item">
-                          <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                          <tt> Lord of the Rings: Two Towers</tt>
-                          <button class="btn btn-info btn-sm">Edit</button>
-                          <button class="btn btn-info btn-sm">Delete</button>
-                      </li>
-                    </span>
-                    <span>
-                      <li class="list-group-item">
-                          <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                          <tt> Avengers </tt>
-                          <button class="btn btn-info btn-sm">Edit</button>
-                          <button class="btn btn-info btn-sm">Delete</button>
-                      </li>
-                    </span>
-                    <span>
-                      <li class="list-group-item">
-                          <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                          <tt> Beauty and the Beast </tt>
-                          <button class="btn btn-info btn-sm">Edit</button>
-                          <button class="btn btn-info btn-sm">Delete</button>
-                      </li>
-                    </span>
-
+                  <ul id="movies" class="list-group">
                   </ul>
 
                 </div>
@@ -389,58 +275,7 @@
             </div>
           </div>
         </section>
-        <section id="movies" class="colorlib-restaurants" data-section="completed">
-          <div class="colorlib-narrow-content">
-            <div class="row">
-
-              <div class="row row-bottom-padded-sm animate-box" data-animate-effect="fadeInLeft">
-
-                <div class="restaurants-desc">
-                  <h2>
-                    <span class="heading-meta">Completed</span>
-                  </h2>
-                </div>
-                <img style="width:100%" src="images/success.jpg" class="img-fluid" alt="Responsive image">
-
-              </div>
-              <div class="row">
-                <div class="col-md-3 animate-box" style="width:100%" data-animate-effect="fadeInLeft">
-                  <ul id="completed" class="list-group">
-                    <span>
-                      <li class="list-group-item">Cras justo odio
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                      </li>
-                    </span>
-                    <span>
-                      <li class="list-group-item">Dapibus ac facilisis in
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                      </li>
-                    </span>
-                    <span>
-                      <li class="list-group-item">Morbi leo risus
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                      </li>
-                    </span>
-                    <span>
-                      <li class="list-group-item">Porta ac consectetur ac
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                      </li>
-                    </span>
-                    <span>
-                      <li class="list-group-item">Vestibulum at eros
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                      </li>
-                    </span>
-                  </ul>
-
-                </div>
-              </div>
-              <div class="row">
-                <hr>
-              </div>
-            </div>
-          </div>
-        </section>
+        
 
       </div>
       <!-- end:colorlib-main -->
