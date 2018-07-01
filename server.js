@@ -27,6 +27,7 @@ const editRestRoutes = require("./routes/editRest");
 const editMovRoutes = require("./routes/editMov");
 const editBookRoutes = require("./routes/editBook");
 const editProdRoutes = require("./routes/editProd");
+const deleteRoutes = require("./routes/delete");
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
@@ -53,7 +54,7 @@ app.use("/api/editRest", editRestRoutes(knex));
 app.use("/api/editMov", editMovRoutes(knex));
 app.use("/api/editBook", editBookRoutes(knex));
 app.use("/api/editProd", editProdRoutes(knex));
-
+app.use("/api/delete", deleteRoutes(knex));
 //cookie encrypt with cookie session
 //if have time, get back to this 
 app.use(cookieSession({
@@ -79,8 +80,6 @@ app.post("/new", (req, res) => {
   new Promise((resolve, reject) => APIs.apis(content, resolve))
   .then(() => res.redirect("/"));
   console.log('after promise')
- 
-  //res.status(200).send({result: 'redirect', url:'/'})
 });
 
 

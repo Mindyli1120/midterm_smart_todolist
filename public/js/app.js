@@ -21,21 +21,35 @@ $(document).ready(function () {
     })
   };
 
+  // function createToDoItem(key) {
+  //   let $span = $('<span>', { ondrop: "drop(event)", ondragover: "allowDrop(event)" })
+  //   let check = $('<input>', { type: 'checkbox', class: 'form-check-input', id: 'exampleCheck1' });
+  //   let item = $('<tt>').text(key.name)
+  //   let icon1 = $('<i>', { id: "icons", class: "fas fa-utensils my-icon", });
+  //   let icon2 = $('<i>', { id: "icons", class: "fas fa-book-open my-icon" });
+  //   let icon3 = $('<i>', { id: "icons", class: "fas fa-box-open my-icon" });
+  //   let icon4 = $('<i>', { id: "icons", class: "fas fa-video my-icon" });
+  //   let $liItem = $('<li>', { id: key.id, class: "list-group-item" });
+  //   let deleteBtn = $('<button>').addClass("btn btn-info btn-sm");
+  //   $liItem.append(check, item, icon1, icon2, icon3, icon4, deleteBtn);
+  //   $span.append($liItem);
+  //   let $category = $('#' + key.category);
+  //   $category.append($span); //if restaurants, books, products, movies is passed in it will add it here
+
   function createToDoItem(key) {
-    let $span = $('<span>', { ondrop: "drop(event)", ondragover: "allowDrop(event)" })
+    let $span = $('<span>')
     let check = $('<input>', { type: 'checkbox', class: 'form-check-input', id: 'exampleCheck1' });
     let item = $('<tt>').text(key.name)
+    let deleteBtn = $('<button>').text('DELETE').addClass("btn btn-info btn-sm").attr("id", "delbtn");
     let icon1 = $('<i>', { id: "icons", class: "fas fa-utensils my-icon", });
     let icon2 = $('<i>', { id: "icons", class: "fas fa-book-open my-icon" });
     let icon3 = $('<i>', { id: "icons", class: "fas fa-box-open my-icon" });
     let icon4 = $('<i>', { id: "icons", class: "fas fa-video my-icon" });
     let $liItem = $('<li>', { id: key.id, class: "list-group-item" });
-    $liItem.append(check, item, icon1, icon2, icon3, icon4);
+    $liItem.append(check, item, deleteBtn, icon1, icon2, icon3, icon4);
     $span.append($liItem);
     let $category = $('#' + key.category);
     $category.append($span); //if restaurants, books, products, movies is passed in it will add it here
-
-    
 
     $(`#${key.id} > #icons.fa-utensils`).click(function () {
       $(this).parent("id")
@@ -51,7 +65,7 @@ $(document).ready(function () {
         }
       })
       console.log(key.list_id);
-    }),
+    });
 
       $(`#${key.id} > #icons.fa-book-open`).click(function () {
         $(this).parent("id")
@@ -64,7 +78,7 @@ $(document).ready(function () {
             loadItems();      
           }
         })
-      }),
+      });
 
       $(`#${key.id} > #icons.fa-box-open`).click(function () {
         $(this).parent("id")
@@ -79,7 +93,7 @@ $(document).ready(function () {
             
           }
         })
-      }),
+      });
 
       $(`#${key.id} > #icons.fa-video`).click(function () {
         $(this).parent("id")
@@ -90,10 +104,24 @@ $(document).ready(function () {
           success: function() {
             location.reload(true);
             loadItems();
-            console.log('click4')
-           
           }
         })
+      });
+
+      $(`#${key.id} > #delbtn`).click(function () {
+        $(this).parent("id")
+  
+        $.ajax({
+          method: "PUT",
+          url:"/api/delete",
+          data: {id: key.id},
+          success: function() {
+            console.log('click 5')
+            location.reload(true);
+            loadItems();
+          }
+        })
+        console.log(key.list_id);
       });
     return $category;
   };
@@ -147,9 +175,6 @@ $(document).ready(function () {
 // //  });
 // })
 
-/* <li> </li> {id: list-group-items, name:key.id}
-
-take the ID of the icon that was clicked, trace it to the closest  line item, grab the name from that item and qeury it in the DB to find the associated to_do_category and update to the ID of the icon that was clicked */
 
 //$(document).on('click', '#icons.fa-book-open', function() {
 //  updateBookItem()
@@ -174,40 +199,7 @@ take the ID of the icon that was clicked, trace it to the closest  line item, gr
 //  });
 //  $(this).attr('id', 'products');
 //})
-//
-//$(document).on('click', '#icons.fa-video', function() {
-//  updateMovieItem()
-//    $.ajax({
-//      method: "GET",
-//      url: "/",
-//      success: function (){
-//        loadItems();
-//      }
-//    });
-//})
-//
-//function updateMovieItem(){
-//  console.log("THIS", $(this));
-//  console.log("LINE ITEM", $(this).closest('li'));
-//  console.log("ID", $(this).closest('li').id);
-//  $(this).closest('li').attr('id', 'movie');
-//  console.log("MOVIE ID", $(this).closest('li').attr('id', 'movie'));
-//  }
-//
-//function updateRestaurantItem(){
-//  $(this).closest('li').attr('id', 'restaurants');
-//  console.log("RESTAURANT ID", $(this).closest('li').attr('id', 'restaurants'));
-//  }
-//
-//function updateBookItem(){
-//  $(this).closest('li').attr('id', 'books');
-//  console.log("BOOK ID", $('<li>').attr('id', 'books'));
-//  }
-//
-//function updateProductItem(){
-//  $(this).closest('li').attr('id', 'products');
-//  console.log("PRODUCT ID", $(this).closest('li').attr('id', 'products'));
-//  }
+
 
 
 
