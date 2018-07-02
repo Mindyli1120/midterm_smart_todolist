@@ -810,12 +810,12 @@ body {
   }
 }
 
-.btn-info {
+.btn-info-del {
   background: $brand-white;
   color: rgb(68, 108, 117);
   border: 1px solid #6A9193;
   border-radius: 0;
-  float:right,
+  float:right !important;
   &:hover,
   &:focus,
   &:active {

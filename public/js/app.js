@@ -6,7 +6,7 @@ $(document).ready(function () {
     let $span = $('<span>')
     let check = $('<input>', { type: 'checkbox', class: 'form-check-input', id: 'exampleCheck1' });
     let item = $('<tt>').text(key.name)
-    let deleteBtn = $('<button>').text('DELETE').addClass("btn btn-info btn-sm").attr("id", "delbtn");
+    let deleteBtn = $('<button>').text('DELETE').addClass("btn btn-info-del btn-sm").attr("id", "delbtn");
     let icon1 = $('<i>', { id: "icons", class: "fas fa-utensils my-icon", });
     let icon2 = $('<i>', { id: "icons", class: "fas fa-book-open my-icon" });
     let icon3 = $('<i>', { id: "icons", class: "fas fa-box-open my-icon" });
