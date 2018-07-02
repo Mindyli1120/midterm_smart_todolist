@@ -17,6 +17,7 @@ $(document).ready(function () {
     let $category = $('#' + key.category);
     $category.append($span); //if restaurants, books, products, movies is passed in it will add it here
 
+    //move the item to a category by click the category icon
     $(`#${key.id} > #icons.fa-utensils`).click(function () {
       $(this).parent("id")
 
@@ -114,78 +115,7 @@ $(document).ready(function () {
 
 });
 
-//  function deleteItems(list) {
-//    $.ajax({
-//      method: "POST",
-//      url: "/",
-//      success: function (list) {
-//        loadItems(list);
-//      }
-//    })
-//  }
 
-//  function totallyDeleteSomethingForRealsies(item){
-//    return new Promise(function(resolve) {
-//      setTimeout(resolve, 2000);
-//    });
-//  }
-// //DELETE BUTTON
-//   $(document).on('click', '#delete.btn', function() {
-//     totallyDeleteSomethingForRealsies($(this).data('delete-id'))
-//       .then(function(){
-//         $(this).parent().remove();
-//       })
-
-
-// });
-
-//CHANGE CATEGORY
-
-// function updateRestaurantItem(item) {
-//   var value = $('#list-group-item').find('attributes.value.value');
-//   console.log(value.value);
-
-
-// }
-
-
-
-// $('#icons').click('.fa-utensils', function() {
-//   console.log('clicked');
-//  updateRestaurantItem()
-// //  $.ajax({
-// //    method: "POST",
-// //    url: "/api/edit",
-// //    success: function (){
-// //      loaditems();
-// //    }
-// //  });
-// })
-
-
-//$(document).on('click', '#icons.fa-book-open', function() {
-//  updateBookItem()
-//  $.ajax({
-//    method: "GET",
-//    url: "/",
-//    success: function (){
-//      loadItems();
-//    }
-//  });
-//  $('<li>').attr('id', 'books');
-//})
-//
-//$(document).on('click', '#icons.fa-box-open', function() {
-//  updateProductItem()
-//  $.ajax({
-//    method: "GET",
-//    url: "/",
-//    success: function (){
-//      loadItems();
-//    }
-//  });
-//  $(this).attr('id', 'products');
-//})
 
 
 

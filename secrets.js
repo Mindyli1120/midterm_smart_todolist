@@ -12,7 +12,9 @@ function apis(content, resolve) {
     term: content,
     location: 'vancouver, bc'
   }).then(response => {
-    console.log("yelp's result: ", response.jsonBody.businesses[0].name);
+    if (response.jsonBody.businesses[0] === undefined) {
+      return resultArr;
+    }
     const result = response.jsonBody.businesses[0].name.toLowerCase();
     console.log(content);
     if (result.includes(content.toLowerCase())) {
@@ -66,7 +68,10 @@ function bookapi(content) {
   const books = require('google-books-catalogue-search');
     books.search(content, (error, results) => {
       if (error) {
-        console.error(error);
+        return console.error(error);
+      }
+      if (results[0] === undefined) {
+        return resultArr;
       }
       const result = results[0].title.toLowerCase();
       if (result.includes(content.toLowerCase())) {
