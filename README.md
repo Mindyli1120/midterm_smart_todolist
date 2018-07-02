@@ -38,6 +38,6 @@ Easily organize your to-dos with this smart, auto-categorizing to-do list app. J
 
 ## Project Team
 
-Mindy Li (https://github.com/Mindyli1120)
-Lexi Keen (https://github.com/peachykeen5)
-Daniele Tiemi (https://github.com/danitiemi)
+- Mindy Li (https://github.com/Mindyli1120)
+- Lexi Keen (https://github.com/peachykeen5)
+- Daniele Tiemi (https://github.com/danitiemi)
