@@ -5,3 +5,4 @@ public/styles
 *.sqlite3
 users_stories.md
 data/.DS_Store
+.DS_Store

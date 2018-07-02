@@ -740,7 +740,6 @@ body {
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 1px;
-  float: right;
   @include border-radius(2px);
   @include transition(.5s);
   padding: 8px 15px !important;
@@ -785,14 +784,18 @@ body {
 }
 
 .btn-success {
-  background: $brand-success;
-  color: $brand-white;
-  border: 2px solid $brand-success;
+  background: $brand-white;
+  color: rgb(68, 108, 117);
+  border: 1px solid #6A9193;
+  border-radius: 0;
+  margin: 0 auto;
+  position: relative;
   &:hover,
   &:focus,
   &:active {
-    background: darken($brand-success, 5%) !important;
-    border-color: darken($brand-success, 5%) !important;
+    cursor: pointer;
+    background: darken(#6A9193, 5%) !important;
+    border-color: darken(#446C75, 5%) !important;
   }
   &.btn-outline {
     background: transparent;
@@ -807,14 +810,16 @@ body {
   }
 }
 
-.btn-info {
+.btn-info-del {
   background: $brand-white;
   color: rgb(68, 108, 117);
   border: 1px solid #6A9193;
   border-radius: 0;
+  float:right !important;
   &:hover,
   &:focus,
   &:active {
+    cursor: pointer;
     background: darken(#6A9193, 5%) !important;
     border-color: darken(#446C75, 5%) !important;
   }

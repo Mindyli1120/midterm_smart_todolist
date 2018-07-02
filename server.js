@@ -37,6 +37,10 @@ app.use(morgan('dev'));
 app.use(knexLogger(knex));
 
 app.use(express.static(path.join(__dirname, "/public")));
+app.set('views', __dirname + '/public/views');
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/styles", sass({
   src: __dirname + "/styles",
@@ -68,10 +72,19 @@ app.get("/", (req, res) => {
 });
 
 //Login  if have time, get back to this
+app.get("/login", (req, res) => {
+  res.render("home.html");
+});
+
+app.get("/login", (req, res)  => {
+  res.redirect("/");
+});
+
 app.get('/login/:id', (req, res) => {
   req.session.user_id = req.params.id;
   res.redirect('/');
 })
+
 
 //test content with APIs
 app.post("/new", (req, res) => {
