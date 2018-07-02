@@ -16,7 +16,7 @@ function apis(content, resolve) {
       return resultArr;
     }
     const result = response.jsonBody.businesses[0].name.toLowerCase();
-    console.log(content);
+    console.log("result for yelp:", result);
     if (result.includes(content.toLowerCase())) {
       resultArr[0] = true;
       return resultArr;
